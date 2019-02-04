@@ -1,5 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import { withPrefix } from 'gatsby'
 
 function ExternalAssets () {
   return (
@@ -12,6 +13,7 @@ function ExternalAssets () {
         rel="stylesheet"
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
       />
+      <link rel="stylesheet" href={withPrefix('/assets/prism/prism.css')} />
     </Helmet>
   )
 }

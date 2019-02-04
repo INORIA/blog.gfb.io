@@ -11,6 +11,7 @@ import green from '@material-ui/core/colors/green'
 import Base from './base'
 import ExternalAssets from '../components/external-assets'
 import './global.css'
+// import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 
 const theme = createMuiTheme({
   palette: {

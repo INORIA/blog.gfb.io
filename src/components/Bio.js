@@ -16,7 +16,8 @@ const styles = theme => ({
     paddingLeft: theme.spacing.unit * 2
   },
   typography: {
-    lineHeight: 1
+    lineHeight: 1,
+    color: 'rgba(0, 0, 0, 0.7)'
   },
   avatar: {
     width: 60,
@@ -24,7 +25,7 @@ const styles = theme => ({
   }
 })
 
-const Bio = ({ classes, className, title, date }) => {
+const Bio = ({ classes, className }) => {
   return (
     <StaticQuery
       query={bioQuery}
@@ -41,20 +42,8 @@ const Bio = ({ classes, className, title, date }) => {
               <Typography className={classes.typography} noWrap gutterBottom>
                 {author}
               </Typography>
-              <Typography
-                className={classes.typography}
-                variant="caption"
-                noWrap
-                gutterBottom
-              >
-                {title}
-              </Typography>
-              <Typography
-                className={classes.typography}
-                variant="caption"
-                noWrap
-              >
-                {date}
+              <Typography variant="caption" noWrap gutterBottom>
+                Software Developer
               </Typography>
             </div>
           </div>
@@ -66,9 +55,7 @@ const Bio = ({ classes, className, title, date }) => {
 
 Bio.propTypes = {
   classes: PropTypes.object.isRequired,
-  className: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired
+  className: PropTypes.string
 }
 
 const bioQuery = graphql`
