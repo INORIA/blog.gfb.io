@@ -1,28 +1,28 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 
 // Components
-import { Link, graphql } from "gatsby";
+import { Link, graphql } from 'gatsby'
 
 const Tags = ({ pageContext, data }) => {
-  const { tag } = pageContext;
-  const { edges, totalCount } = data.allMarkdownRemark;
+  const { tag } = pageContext
+  const { edges, totalCount } = data.allMarkdownRemark
   const tagHeader = `${totalCount} post${
-    totalCount === 1 ? "" : "s"
-  } tagged with "${tag}"`;
+    totalCount === 1 ? '' : 's'
+  } tagged with "${tag}"`
 
   return (
     <div>
       <h1>{tagHeader}</h1>
       <ul>
         {edges.map(({ node }) => {
-          const path = node.fields.slug;
-          const { title } = node.frontmatter;
+          const path = node.fields.slug
+          const { title } = node.frontmatter
           return (
             <li key={path}>
               <Link to={path}>{title}</Link>
             </li>
-          );
+          )
         })}
       </ul>
       {/*
@@ -31,8 +31,8 @@ const Tags = ({ pageContext, data }) => {
             */}
       <Link to="/tags">All tags</Link>
     </div>
-  );
-};
+  )
+}
 
 Tags.propTypes = {
   pageContext: PropTypes.shape({
@@ -52,9 +52,9 @@ Tags.propTypes = {
       )
     })
   })
-};
+}
 
-export default Tags;
+export default Tags
 
 export const pageQuery = graphql`
   query($tag: String) {
@@ -76,4 +76,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

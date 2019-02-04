@@ -1,48 +1,80 @@
-import React from "react";
-import { Link, graphql } from "gatsby";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link, graphql } from 'gatsby'
+import { withStyles } from '@material-ui/core/styles'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import ExternalAssets from '../components/external-assets'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
 
-import Bio from "../components/Bio";
-import Layout from "../components/Layout";
-import SEO from "../components/seo";
-import { rhythm } from "../utils/typography";
+const styles = theme => ({
+  content: {
+    width: '100%',
+    maxWidth: '700px'
+  },
+  subheading: {
+    margin: `${theme.spacing.unit}px 0`
+  },
+  paper: theme.mixins.gutters({
+    boxShadow:
+      '0px 0px 0px 0px rgba(0, 0, 0, 0),0px 2px 2px 0px rgba(0, 0, 0, 0),0px 4px 5px -2px rgba(0, 0, 0, 0.17)',
+    paddingTop: 16,
+    paddingBottom: 16,
+    marginTop: theme.spacing.unit * 5,
+    '&:first-child': {
+      marginTop: 0
+    }
+  })
+})
 
-class BlogIndex extends React.Component {
-  render() {
-    const { data } = this.props;
-    const siteTitle = data.site.siteMetadata.title;
-    const posts = data.allMarkdownRemark.edges;
+const BlogIndex = ({ data, location, classes }) => {
+  const siteTitle = data.site.siteMetadata.title
+  const posts = data.allMarkdownRemark.edges
 
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title="All posts"
-          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
-        />
-        <Bio />
+  return (
+    <Layout location={location} title={siteTitle}>
+      <ExternalAssets />
+      <SEO
+        title="All posts"
+        keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+      />
+      <div className={classes.content}>
         {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug;
+          const title = node.frontmatter.title || node.fields.slug
           return (
-            <div key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4)
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+            <Paper className={classes.paper} key={node.fields.slug}>
+              <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                <Typography variant="h2" gutterBottom>
                   {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-            </div>
-          );
+                </Typography>
+                <Typography
+                  className={classes.subheading}
+                  variant="caption"
+                  gutterBottom
+                >
+                  {node.frontmatter.date}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  dangerouslySetInnerHTML={{ __html: node.excerpt }}
+                />
+              </Link>
+            </Paper>
+          )
         })}
-      </Layout>
-    );
-  }
+      </div>
+    </Layout>
+  )
 }
 
-export default BlogIndex;
+BlogIndex.propTypes = {
+  data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
+}
+
+export default withStyles(styles)(BlogIndex)
 
 export const pageQuery = graphql`
   query {
@@ -59,11 +91,11 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "YYYY-MM-DD")
             title
           }
         }
       }
     }
   }
-`;
+`

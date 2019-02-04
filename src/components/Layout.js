@@ -1,75 +1,88 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react'
+import Header from './header'
+import PropTypes from 'prop-types'
+import {
+  MuiThemeProvider,
+  createMuiTheme,
+  withStyles
+} from '@material-ui/core/styles'
+import purple from '@material-ui/core/colors/purple'
+import green from '@material-ui/core/colors/green'
+import Base from './base'
+import './global.css'
 
-import { rhythm, scale } from "../utils/typography"
-
-class Layout extends React.Component {
-  render() {
-    const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
-    let header
-
-    if (location.pathname === rootPath) {
-      header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h3>
-      )
+const theme = createMuiTheme({
+  palette: {
+    // type: 'dark',
+    primary: purple,
+    secondary: green
+  },
+  status: {
+    danger: 'orange'
+  },
+  typography: {
+    useNextVariants: true,
+    h2: {
+      fontSize: '1.8em',
+      // margin: `${8 * 1}px 0`,
+      color: 'rgba(0, 0, 0, 0.6)',
+      fontWeight: 400
+    },
+    h3: {
+      color: 'rgba(0, 0, 0, 0.6)',
+      fontWeight: 500
+    },
+    body1: {
+      // fontSize: '1em',
+      color: 'rgba(0, 0, 0, 0.7)'
+    },
+    subtitle2: {
+      color: 'rgba(0, 0, 0, 0.7)'
     }
-    return (
-      <div
-        style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
-        <header>{header}</header>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    )
+    // caption: {
+    //   margin: '0.5em 0'
+    // }
   }
+})
+
+const styles = () => ({
+  mainWrapper: {
+    width: '100%'
+  },
+  main: {
+    width: '100%',
+    padding: theme.spacing.unit * 4,
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '56px',
+    boxSizing: 'border-box',
+    minHeight: 'calc(100vh - 56px * 2)',
+    [theme.breakpoints.up('sm')]: {
+      marginTop: '64px'
+    },
+    [theme.breakpoints.up('md')]: {
+      minHeight: 'calc(100vh - 64px * 2)'
+    }
+  }
+})
+
+const Layout = ({ classes, children }) => (
+  <MuiThemeProvider theme={theme}>
+    <Base>
+      <Header />
+      <div className={classes.mainWrapper}>
+        <main className={classes.main}>{children}</main>
+      </div>
+    </Base>
+  </MuiThemeProvider>
+)
+
+Layout.propTypes = {
+  classes: PropTypes.object.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 }
 
-export default Layout
+export default withStyles(styles)(Layout)
