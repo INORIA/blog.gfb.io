@@ -30,6 +30,8 @@ const BlogPostTemplate = ({ data, pageContext, location, classes }) => {
   const siteTitle = data.site.siteMetadata.title
   // const { previous, next } = pageContext
 
+  console.log(pageContext)
+
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title={post.frontmatter.title} description={post.excerpt} />

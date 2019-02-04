@@ -2,16 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
 import Typography from '@material-ui/core/Typography'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import { withStyles } from '@material-ui/core/styles'
+import Image from 'gatsby-image'
 
 const drawerWidth = 240
 
 const query = graphql`
   query HeaderQuery {
+    logo: file(absolutePath: { regex: "/gfb-logo.png/" }) {
+      childImageSharp {
+        fixed(width: 32, height: 32) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
     site {
       siteMetadata {
         title
@@ -55,28 +61,35 @@ const styles = theme => ({
   footer: {
     display: 'flex',
     flexDirection: 'row-reverse'
+  },
+  logo: {
+    marginRight: '10px'
   }
 })
 
 const Header = ({ classes }) => (
   <AppBar className={classes.appBar} color="default">
     <Toolbar>
-      <IconButton aria-label="open drawer" className={classes.navIconHide}>
-        <MenuIcon />
-      </IconButton>
       <StaticQuery
         query={query}
         render={data => {
           return (
-            <Typography
-              className={classes.titleTypography}
-              color="inherit"
-              noWrap
-            >
-              <Link className={classes.titleLink} to="/">
-                {data.site.siteMetadata.title}
-              </Link>
-            </Typography>
+            <>
+              <Image
+                className={classes.logo}
+                fixed={data.logo.childImageSharp.fixed}
+                alt=""
+              />
+              <Typography
+                className={classes.titleTypography}
+                color="inherit"
+                noWrap
+              >
+                <Link className={classes.titleLink} to="/">
+                  {data.site.siteMetadata.title}
+                </Link>
+              </Typography>
+            </>
           )
         }}
       />
