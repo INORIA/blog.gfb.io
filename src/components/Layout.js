@@ -24,6 +24,9 @@ const theme = createMuiTheme({
   },
   typography: {
     useNextVariants: true,
+    h1: {
+      fontSize: '1.9em'
+    },
     h2: {
       fontSize: '1.8em',
       // margin: `${8 * 1}px 0`,

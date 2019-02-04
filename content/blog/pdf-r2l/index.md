@@ -75,4 +75,4 @@ http://d.hatena.ne.jp/kiwanami/20101215/1292400269
 
 ## 参考
 
-http://www.adobe.com/devnet/pdf.html http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/pdf\_reference\_1-7.pdf
+http://www.adobe.com/devnet/pdf.html ~~http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/pdf\_reference\_1-7.pdf~~

@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
-
+import { graphql } from 'gatsby'
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { withStyles } from '@material-ui/core'
+import Typography from '@material-ui/core/Typography'
 
 const styles = theme => ({
   content: {
@@ -39,8 +39,12 @@ const BlogPostTemplate = ({ data, pageContext, location, classes }) => {
         <Bio />
 
         <article>
-          <h1>{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
+          <Typography component="h2" variant="h1" gutterBottom>
+            {post.frontmatter.title}
+          </Typography>
+          <Typography variant="caption" gutterBottom>
+            {post.frontmatter.date}
+          </Typography>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
         </article>
       </div>
