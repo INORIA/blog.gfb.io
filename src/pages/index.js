@@ -33,10 +33,7 @@ const BlogIndex = ({ data, location, classes }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO
-        title="All posts"
-        keywords={[`blog`, `gatsby`, `javascript`, `react`]}
-      />
+      <SEO keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
       <div className={classes.content}>
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
