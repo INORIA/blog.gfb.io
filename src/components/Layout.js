@@ -9,6 +9,7 @@ import {
 import purple from '@material-ui/core/colors/purple'
 import green from '@material-ui/core/colors/green'
 import Base from './base'
+import ExternalAssets from '../components/external-assets'
 import './global.css'
 
 const theme = createMuiTheme({
@@ -38,10 +39,10 @@ const theme = createMuiTheme({
     },
     subtitle2: {
       color: 'rgba(0, 0, 0, 0.7)'
+    },
+    caption: {
+      color: 'rgba(0, 0, 0, 0.54)'
     }
-    // caption: {
-    //   margin: '0.5em 0'
-    // }
   }
 })
 
@@ -68,6 +69,7 @@ const styles = () => ({
 
 const Layout = ({ classes, children }) => (
   <MuiThemeProvider theme={theme}>
+    <ExternalAssets />
     <Base>
       <Header />
       <div className={classes.mainWrapper}>

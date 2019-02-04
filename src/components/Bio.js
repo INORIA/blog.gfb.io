@@ -1,48 +1,74 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import Typography from '@material-ui/core/Typography'
 import { StaticQuery, graphql } from 'gatsby'
-import Image from 'gatsby-image'
+import { withStyles } from '@material-ui/core/styles'
+import Avatar from '@material-ui/core/Avatar'
 
-import { rhythm } from '../utils/typography'
+const styles = theme => ({
+  main: {
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: '2em',
+    marginBottom: '3em'
+  },
+  content: {
+    paddingLeft: theme.spacing.unit * 2
+  },
+  typography: {
+    lineHeight: 1
+  },
+  avatar: {
+    width: 60,
+    height: 60
+  }
+})
 
-function Bio () {
+const Bio = ({ classes, className, title, date }) => {
   return (
     <StaticQuery
       query={bioQuery}
       render={data => {
-        const { author, social } = data.site.siteMetadata
+        const { author } = data.site.siteMetadata
         return (
-          <div
-            style={{
-              display: `flex`,
-              marginBottom: rhythm(2.5)
-            }}
-          >
-            <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              alt={author}
-              style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`
-              }}
-              imgStyle={{
-                borderRadius: `50%`
-              }}
+          <div className={`${classes.main} ${className}`}>
+            <Avatar
+              alt="writer icon"
+              src={`//github.com/${author}.png`}
+              className={classes.avatar}
             />
-            <p>
-              Written by <strong>{author}</strong> who lives and works in San
-              Francisco building useful things.
-              {` `}
-              <a href={`https://twitter.com/${social.twitter}`}>
-                You should follow him on Twitter
-              </a>
-            </p>
+            <div className={classes.content}>
+              <Typography className={classes.typography} noWrap gutterBottom>
+                {author}
+              </Typography>
+              <Typography
+                className={classes.typography}
+                variant="caption"
+                noWrap
+                gutterBottom
+              >
+                {title}
+              </Typography>
+              <Typography
+                className={classes.typography}
+                variant="caption"
+                noWrap
+              >
+                {date}
+              </Typography>
+            </div>
           </div>
         )
       }}
     />
   )
+}
+
+Bio.propTypes = {
+  classes: PropTypes.object.isRequired,
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired
 }
 
 const bioQuery = graphql`
@@ -65,4 +91,4 @@ const bioQuery = graphql`
   }
 `
 
-export default Bio
+export default withStyles(styles)(Bio)

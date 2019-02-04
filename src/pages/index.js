@@ -4,7 +4,6 @@ import { Link, graphql } from 'gatsby'
 import { withStyles } from '@material-ui/core/styles'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import ExternalAssets from '../components/external-assets'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 
@@ -34,7 +33,6 @@ const BlogIndex = ({ data, location, classes }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <ExternalAssets />
       <SEO
         title="All posts"
         keywords={[`blog`, `gatsby`, `javascript`, `react`]}
