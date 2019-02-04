@@ -25,7 +25,9 @@ const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
     h1: {
-      fontSize: '1.9em'
+      fontSize: '1.9em',
+      fontWeight: 500,
+      color: 'rgba(0, 0, 0, 0.7)'
     },
     h2: {
       fontSize: '1.8em',
