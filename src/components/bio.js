@@ -59,7 +59,7 @@ Bio.propTypes = {
 }
 
 const bioQuery = graphql`
-  query BioQuery {
+  query BiographyQuery {
     site {
       siteMetadata {
         author
