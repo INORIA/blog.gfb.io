@@ -14,7 +14,7 @@ Unity Version: 2017.2.0f3
 今はスマホ対応していないので警告が出てしまいます。  
 OK を押すとそのまま進めるのですが、スマホでも動作するように軽めに作っているプロジェクトだといちいちタップするのが大変です。
 
-![Please note that Unity WebGL is not currently supported on mobiles. Press OK if you wish to continue anyway.](B415279D3213E1B737A6E7C61D73CFE3.png)
+![Please note that Unity WebGL is not currently supported on mobiles. Press OK if you wish to continue anyway.](/assets/uploads/B415279D3213E1B737A6E7C61D73CFE3.png)
 
 これはドキュメントに任意に off にすることができますとあった記憶がありますが未だに(2017.2.0f3)設定が見当たらないのでちょいと手を加えます。  
 判定処理は Build/UnityLoader.js (minify されてます) で行われていて当該箇所は以下のようになっています。
