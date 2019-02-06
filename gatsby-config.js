@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `金魚鉢::Tech();`,
+    title: `金魚鉢::log();`,
     author: `INORIA`,
     description: `GFB Blog Posts`,
     siteUrl: `https://blog.gfb.io/`,
