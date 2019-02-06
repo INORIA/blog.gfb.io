@@ -6,6 +6,7 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { withStyles } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
+import withRoot from '../with-root'
 
 const styles = theme => ({
   content: {
@@ -57,7 +58,7 @@ BlogPostTemplate.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(BlogPostTemplate)
+export default withRoot(withStyles(styles)(BlogPostTemplate))
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {

@@ -4,8 +4,9 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import PostList from '../components/post-list'
+import withRoot from '../with-root'
 
-const BlogIndex = ({ data, location, classes }) => {
+const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
@@ -19,11 +20,10 @@ const BlogIndex = ({ data, location, classes }) => {
 
 BlogIndex.propTypes = {
   data: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired
 }
 
-export default BlogIndex
+export default withRoot(BlogIndex)
 
 export const pageQuery = graphql`
   query {

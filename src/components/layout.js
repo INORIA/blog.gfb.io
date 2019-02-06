@@ -1,57 +1,11 @@
 import React from 'react'
 import Header from './header'
 import PropTypes from 'prop-types'
-import {
-  MuiThemeProvider,
-  createMuiTheme,
-  withStyles
-} from '@material-ui/core/styles'
-import purple from '@material-ui/core/colors/purple'
-import green from '@material-ui/core/colors/green'
+import { withStyles } from '@material-ui/core/styles'
 import Base from './base'
 import ExternalAssets from '../components/external-assets'
-import './global.css'
-// import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 
-const theme = createMuiTheme({
-  palette: {
-    // type: 'dark',
-    primary: purple,
-    secondary: green
-  },
-  status: {
-    danger: 'orange'
-  },
-  typography: {
-    useNextVariants: true,
-    h1: {
-      fontSize: '1.9em',
-      fontWeight: 500,
-      color: 'rgba(0, 0, 0, 0.7)'
-    },
-    h2: {
-      fontSize: '1.8em',
-      color: 'rgba(0, 0, 0, 0.6)',
-      fontWeight: 400
-    },
-    h3: {
-      color: 'rgba(0, 0, 0, 0.6)',
-      fontWeight: 500
-    },
-    body1: {
-      lineHeight: '2',
-      color: 'rgba(0, 0, 0, 0.7)'
-    },
-    subtitle2: {
-      color: 'rgba(0, 0, 0, 0.7)'
-    },
-    caption: {
-      color: 'rgba(0, 0, 0, 0.54)'
-    }
-  }
-})
-
-const styles = () => ({
+const styles = theme => ({
   mainWrapper: {
     width: '100%'
   },
@@ -73,7 +27,7 @@ const styles = () => ({
 })
 
 const Layout = ({ classes, children }) => (
-  <MuiThemeProvider theme={theme}>
+  <>
     <ExternalAssets />
     <Base>
       <Header />
@@ -81,7 +35,7 @@ const Layout = ({ classes, children }) => (
         <main className={classes.main}>{children}</main>
       </div>
     </Base>
-  </MuiThemeProvider>
+  </>
 )
 
 Layout.propTypes = {
