@@ -48,7 +48,7 @@ const styles = theme => ({
     }
   },
   titleTypography: {
-    fontSize: '1.3125rem',
+    fontSize: '1.3125em',
     color: 'rgba(0, 0, 0, 0.6)',
     margin: 0,
     fontWeight: 500

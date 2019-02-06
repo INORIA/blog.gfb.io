@@ -22,7 +22,17 @@ const styles = theme => ({
     '&:first-child': {
       marginTop: 0
     }
-  })
+  }),
+  [theme.breakpoints.down('sm')]: {
+    bodyTextWrapper: {
+      overflow: 'hidden'
+    },
+    bodyText: {
+      display: 'box',
+      boxOrient: 'vertical',
+      lineClamp: 3
+    }
+  }
 })
 
 const PostList = ({ classes, posts }) => {
@@ -43,10 +53,13 @@ const PostList = ({ classes, posts }) => {
               >
                 {node.frontmatter.date}
               </Typography>
-              <Typography
-                variant="body1"
-                dangerouslySetInnerHTML={{ __html: node.excerpt }}
-              />
+              <div className={classes.bodyTextWrapper}>
+                <Typography
+                  className={classes.bodyText}
+                  variant="body1"
+                  dangerouslySetInnerHTML={{ __html: node.excerpt }}
+                />
+              </div>
             </Link>
           </Paper>
         )

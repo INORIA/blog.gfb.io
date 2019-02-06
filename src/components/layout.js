@@ -7,7 +7,10 @@ import ExternalAssets from '../components/external-assets'
 
 const styles = theme => ({
   mainWrapper: {
-    width: '100%'
+    width: '100%',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '14px'
+    }
   },
   main: {
     width: '100%',
@@ -17,6 +20,8 @@ const styles = theme => ({
     marginTop: '56px',
     boxSizing: 'border-box',
     minHeight: 'calc(100vh - 56px * 2)',
+    overflowWrap: 'break-word',
+    wordWrap: 'break-word',
     [theme.breakpoints.up('sm')]: {
       marginTop: '64px'
     },

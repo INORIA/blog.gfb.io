@@ -20,6 +20,7 @@ a {
 .gatsby-highlight pre[class*="language-"].line-numbers {
   padding: 0 2.8em 1em;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 p {

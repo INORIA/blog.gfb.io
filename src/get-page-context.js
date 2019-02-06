@@ -29,7 +29,7 @@ const theme = createMuiTheme({
       color: 'rgba(0, 0, 0, 0.7)'
     },
     h2: {
-      fontSize: '1.8em',
+      fontSize: '1.6em',
       color: 'rgba(0, 0, 0, 0.6)',
       fontWeight: 400
     },
@@ -39,7 +39,8 @@ const theme = createMuiTheme({
     },
     body1: {
       lineHeight: '2',
-      color: 'rgba(0, 0, 0, 0.7)'
+      color: 'rgba(0, 0, 0, 0.7)',
+      fontSize: '1em'
     },
     subtitle2: {
       color: 'rgba(0, 0, 0, 0.7)'
