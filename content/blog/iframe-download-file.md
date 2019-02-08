@@ -1,6 +1,6 @@
 ---
 title: JavaScript でファイルダウンロードさせる
-date: "2014-02-24T06:10:00.000Z"
+date: 2014-02-24T06:10:00.000Z
 tags:
   - uncategorized
 ---

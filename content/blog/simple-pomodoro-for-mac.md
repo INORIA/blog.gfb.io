@@ -1,7 +1,7 @@
 ---
 templateKey: blog-post
 title: Mac でお手軽ポモドーロ
-date: "2019-02-08T16:46:12.953Z"
+date: 2019-02-08T16:46:12.953Z
 tags:
   - command-line
 ---
