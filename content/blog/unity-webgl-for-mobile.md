@@ -1,7 +1,8 @@
 ---
 title: Unity WebGL のスマホ対応
 date: "2017-11-25T17:51:00.000Z"
-tags: ["uncategorized"]
+tags:
+  - uncategorized
 ---
 
 Unity で WebGL のビルドができるのですが、スマホ対応を公式には謳っていないので色々と調整が必要でした。  

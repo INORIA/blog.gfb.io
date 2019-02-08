@@ -1,7 +1,8 @@
 ---
 title: PDF を R2L (右綴じ) にする方法
 date: "2017-09-03T07:27:00.000Z"
-tags: ["uncategorized"]
+tags:
+  - uncategorized
 ---
 
 最近自炊をしているのですがマンガは大体右綴じになっています。  

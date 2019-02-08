@@ -1,7 +1,8 @@
 ---
 title: JavaScript でファイルダウンロードさせる
 date: "2014-02-24T06:10:00.000Z"
-tags: ["uncategorized"]
+tags:
+  - uncategorized
 ---
 
 JavaScript で動的に作成した CSV ファイルをダウンロードさせる為に `window.location = 'url';` などでリダイレクトをかけていたのですが、これを実行した時点でページの読み込みが終了してしまいます。 iframe を利用したリダイレクトがあったので利用してみました。  
