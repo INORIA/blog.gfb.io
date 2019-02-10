@@ -2,6 +2,7 @@
 templateKey: blog-post
 title: Mac でお手軽ポモドーロ
 date: 2019-02-08T16:46:12.953Z
+slug: simple-pomodoro-for-mac
 tags:
   - command-line
 ---

@@ -1,6 +1,7 @@
 ---
 title: PDF を R2L (右綴じ) にする方法
 date: 2017-09-03T07:27:00.000Z
+slug: pdf-r2l
 tags:
   - uncategorized
 ---

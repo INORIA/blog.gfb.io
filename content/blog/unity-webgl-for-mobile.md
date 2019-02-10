@@ -1,6 +1,7 @@
 ---
 title: Unity WebGL のスマホ対応
 date: 2017-11-25T17:51:00.000Z
+slug: unity-webgl-for-mobile
 tags:
   - uncategorized
 ---
