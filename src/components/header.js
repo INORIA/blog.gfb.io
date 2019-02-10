@@ -13,8 +13,8 @@ const query = graphql`
   query HeaderQuery {
     logo: file(absolutePath: { regex: "/gfb-logo.png/" }) {
       childImageSharp {
-        fixed(width: 32, height: 32) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 64, maxHeight: 64) {
+          ...GatsbyImageSharpFluid_noBase64
         }
       }
     }
@@ -63,7 +63,9 @@ const styles = theme => ({
     flexDirection: 'row-reverse'
   },
   logo: {
-    marginRight: '10px'
+    marginRight: '10px',
+    width: '32px',
+    height: '32px'
   }
 })
 
@@ -77,7 +79,7 @@ const Header = ({ classes }) => (
             <>
               <Image
                 className={classes.logo}
-                fixed={data.logo.childImageSharp.fixed}
+                fluid={data.logo.childImageSharp.fluid}
                 alt=""
               />
               <Typography
