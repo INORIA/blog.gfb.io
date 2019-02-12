@@ -5,10 +5,6 @@ import { withPrefix } from 'gatsby'
 function ExternalAssets () {
   return (
     <Helmet>
-      <script
-        src="https://identity.netlify.com/v1/netlify-identity-widget.js"
-        defer
-      />
       <script>{`if (window.netlifyIdentity) {
     window.netlifyIdentity.on("init", user => {
       if (!user) {
