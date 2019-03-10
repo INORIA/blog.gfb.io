@@ -5,7 +5,9 @@ title: GraphCMS から Netlify+Gatsby+Netlify CMS に移行して爆速になり
 date: 2019-02-12T14:08:40.695Z
 tags:
   - blog-update
+category: blog
 ---
+
 2/5 頃にこのサイトを GraphCMS から Netlify+Gatsby+Netlify CMS 構成に変更しました。
 もともとの構成は記事取得に API リクエストがかかるので比較するのはフェアではないのですが、PageSpeed Insights だと 21 から 96 まであがりました。
 

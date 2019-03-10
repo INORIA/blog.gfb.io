@@ -6,7 +6,8 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const tagTemplate = path.resolve('src/templates/tags.js')
+  const tagTemplate = path.resolve('./src/templates/tags.js')
+  const categoryTemplate = path.resolve('./src/templates/category.js')
   return graphql(
     `
       {
@@ -24,6 +25,7 @@ exports.createPages = ({ graphql, actions }) => {
                 title
                 slug
                 tags
+                category
               }
             }
           }
@@ -35,12 +37,18 @@ exports.createPages = ({ graphql, actions }) => {
       throw result.errors
     }
 
+    const categorySet = new Set()
+
     // Create blog posts pages.
     const posts = result.data.allMarkdownRemark.edges
 
     posts.forEach((post, index) => {
       const previous = index === posts.length - 1 ? null : posts[index + 1].node
       const next = index === 0 ? null : posts[index - 1].node
+
+      if (post.node.frontmatter.category) {
+        categorySet.add(post.node.frontmatter.category)
+      }
 
       createPage({
         path: post.node.frontmatter.slug,
@@ -73,6 +81,19 @@ exports.createPages = ({ graphql, actions }) => {
           tag
         }
       })
+    })
+
+    // Categories
+    const categoryList = Array.from(categorySet)
+    categoryList.forEach(category => {
+      createPage({
+        path: `/category/${_.kebabCase(category)}/`,
+        component: categoryTemplate,
+        context: { category }
+      })
+    })
+    createPage({
+      path: '/category/'
     })
   })
 }

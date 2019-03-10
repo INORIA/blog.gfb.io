@@ -42,7 +42,10 @@ const PostList = ({ classes, posts }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
           <Paper className={classes.paper} key={node.fields.slug}>
-            <Link style={{ boxShadow: `none` }} to={node.frontmatter.slug}>
+            <Link
+              style={{ boxShadow: `none` }}
+              to={`/${node.frontmatter.slug}`}
+            >
               <Typography variant="h2" gutterBottom>
                 {title}
               </Typography>
